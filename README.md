@@ -10,7 +10,7 @@ confidence intervals, and score agent trust without inventing numbers.
 `require()` it, or `import` it — no build step, no native modules, no network calls.
 
 ```html
-<script src="https://unpkg.com/cwi-verification-kit/dist/cwi-verification-kit.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/CumulativeWebInc/cwi-verification-kit@main/dist/cwi-verification-kit.js"></script>
 <script>
   const ok = CWIVerificationKit.verifyAttestation(record);
   console.log(ok.ok, ok.checks);
