@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cwi-verification-kit — CWI Trust Layer · Cumulative Web Inc</title>
+<meta name="description" content="The CWI Trust Layer verification library — one zero-dependency JavaScript bundle to verify CWI attestations, stamp claims with reproducible confidence intervals, and score agent trust without inventing numbers.">
+<meta property="og:title" content="cwi-verification-kit — CWI Trust Layer · Cumulative Web Inc">
+<meta property="og:description" content="Zero-dependency JS verification for the AI-agent economy: EAS attestations, error-bar claim stamping, evidence-bound trust scoring.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cumulativewebinc.github.io/cwi-verification-kit/">
+<meta property="og:image" content="https://cumulativewebinc.github.io/cwi-verification-kit/brand/cwi-logo.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cwi-verification-kit — CWI Trust Layer · Cumulative Web Inc">
+<meta name="twitter:description" content="Verify CWI attestations, stamp claims, score agent trust — zero deps, browser or Node.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"cwi-verification-kit","url":"https://cumulativewebinc.github.io/cwi-verification-kit/","applicationCategory":"DeveloperApplication","operatingSystem":"Web, Node.js","softwareVersion":"1.0.0","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"Cumulative Web Inc","url":"https://cumulativeweb.com"},"description":"One zero-dependency JavaScript bundle that verifies CWI attestations (Keccak-256, secp256k1, EIP-712 from scratch), stamps claims with reproducible confidence intervals, and scores agent trust without inventing numbers."}
+</script>
+<style>
+  :root { --bg:#0b0e14; --fg:#e6e9f0; --mut:#8b93a7; --acc:#ffd34d; --ok:#3ddc84; --bad:#ff5d5d; }
+  body { background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif; margin:0; padding:2rem 1rem; }
+  main { max-width:860px; margin:0 auto; }
+  h1 { font-size:1.9rem; margin:0 0 .2rem; }
+  .sub { color:var(--mut); margin-bottom:1.5rem; }
+  .badge { display:inline-block; border:1px solid var(--acc); color:var(--acc); border-radius:4px; padding:.15rem .5rem; font-size:.8rem; margin-right:.4rem; }
+  section { border:1px solid #232838; border-radius:10px; padding:1.2rem; margin:1rem 0; }
+  h2 { margin-top:0; font-size:1.2rem; }
+  button { background:var(--acc); color:#111; border:0; border-radius:6px; padding:.6rem 1.1rem; font-weight:700; cursor:pointer; font-size:1rem; }
+  button:disabled { opacity:.5; }
+  textarea, input { width:100%; box-sizing:border-box; background:#11141d; color:var(--fg); border:1px solid #2a3040; border-radius:6px; padding:.6rem; font-family:ui-monospace,monospace; font-size:.85rem; }
+  textarea { min-height:120px; }
+  pre { background:#11141d; border:1px solid #2a3040; border-radius:6px; padding:.8rem; overflow-x:auto; font-size:.82rem; white-space:pre-wrap; }
+  .pass { color:var(--ok); } .fail { color:var(--bad); } .skip { color:var(--mut); }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  @media (max-width:640px){ .row{grid-template-columns:1fr;} }
+  footer { color:var(--mut); font-size:.85rem; margin-top:2rem; }
+  a { color:var(--acc); }
+</style>
+</head>
+<body>
+<main>
+  <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">
+    <img src="brand/cwi-logo.jpg" alt="Cumulative Web Inc logo" style="width:64px;height:64px;border-radius:50%;border:2px solid var(--acc);object-fit:cover">
+    <h1 style="margin:0">👑 cwi-verification-kit</h1>
+  </div>
+  <div class="sub">The CWI Trust Layer — zero-dependency verification for the AI-agent economy.
+    <span class="badge">31/31 tests green</span><span class="badge">$0</span><span class="badge">no deps</span></div>
+
+  <section>
+    <h2>1 · Verify a live CWI attestation</h2>
+    <p class="sub">Runs entirely in your browser: schema UID, EAS domain, <code>uid = keccak256(signature)</code>,
+      EIP-712 signer recovery, ABI payload decode, refUID chain. Paste any record from the
+      <a href="https://github.com/CumulativeWebInc/cwi-memory-chain">CWI memory chain</a>, or use the sample.</p>
+    <textarea id="rec" placeholder='Paste an attestation record JSON here…'></textarea>
+    <p><button id="btnVerify">Verify attestation</button>
+       <button id="btnSample" style="background:#232838;color:var(--fg)">Load live sample record</button></p>
+    <pre id="outVerify">Results appear here.</pre>
+  </section>
+
+  <section>
+    <h2>2 · Stamp a claim with The Error Bar</h2>
+    <p class="sub">Fake precision dies on contact — every claim gets a reproducible confidence interval.</p>
+    <div class="row">
+      <div><label>Claim<input id="ebClaim" value="Zooted Zone has about 307000 lifetime Spotify plays"></label></div>
+      <div><label>Point estimate<input id="ebPoint" value="307000"></label></div>
+    </div>
+    <div class="row" style="margin-top:.6rem">
+      <div><label>Type<input id="ebType" value="stat"></label></div>
+      <div><label>Evidence tier<input id="ebTier" value="corroborated"></label></div>
+    </div>
+    <p><button id="btnStamp">Stamp claim</button></p>
+    <pre id="outStamp">Stamped output appears here.</pre>
+  </section>
+
+  <section>
+    <h2>3 · Score agent trust (Verdict Engine)</h2>
+    <p class="sub">Deterministic, evidence-bound scoring. Insufficient evidence → <code>insufficient-data</code>, never a made-up number.</p>
+    <p><button id="btnVerdict">Run sample scoring</button></p>
+    <pre id="outVerdict">Verdict appears here.</pre>
+  </section>
+
+  <footer>
+    <section style="text-align:center;margin-bottom:1.5rem">
+      <h2 style="font-size:1.2rem">Ship verification your users can check</h2>
+      <p class="sub">cwi-verification-kit is a CWI Agent Deck product — embeddable trust verification for agent platforms, marketplaces, and registries. Zero dependencies, MIT-licensed core.</p>
+      <p><a href="mailto:hp@cumulativeweb.com?subject=cwi-verification-kit%20integration" style="display:inline-block;background:var(--acc);color:#111;font-weight:700;border-radius:6px;padding:.6rem 1.1rem;text-decoration:none">Contact hp@cumulativeweb.com</a>
+      <a href="https://cumulativewebinc.github.io/cwi-verification-kit/" style="display:inline-block;border:1px solid #2a3040;color:var(--fg);border-radius:6px;padding:.6rem 1.1rem;margin-left:.6rem">Try the live demo →</a></p>
+      <p class="sub" style="font-size:.85rem">A Cumulative Web Inc product. Pricing on request — no prices are published without approval.</p>
+    </section>
+    <p>© 2026 Cumulative Web Inc · Built by Cumulative Web Inc · MIT License · <a href="https://github.com/CumulativeWebInc/cwi-verification-kit">repo</a> ·
+    <a href="https://github.com/CumulativeWebInc/cwi-verification-kit/blob/main/docs/PARITY.md">parity report</a> ·
+    <a href="https://github.com/CumulativeWebInc/cwi-verification-kit/blob/main/docs/API.md">API docs</a> ·
+    <a href="mailto:hp@cumulativeweb.com">hp@cumulativeweb.com</a> · <a href="llms.txt">llms.txt</a> · <a href=".well-known/agent-card.json">agent card</a></p>
+    <p>Author: Henry Pitts (Black Lansky) is the founder of Cumulative Web Inc and a systems architect building verification infrastructure for the AI-agent economy.</p>
+  </footer>
+</main>
+<script src="./cwi-verification-kit.js"></script>
+<script>
+const kit = window.CWIVerificationKit;
+const $ = (id) => document.getElementById(id);
+
+$('btnSample').onclick = async () => {
+  $('btnSample').disabled = true;
+  try {
+    const r = await fetch('https://raw.githubusercontent.com/CumulativeWebInc/cwi-memory-chain/main/records/MUSE_CWI.json');
+    const records = await r.json();
+    $('rec').value = JSON.stringify(records[0], null, 2);
+  } catch (e) { $('outVerify').textContent = 'Could not fetch sample: ' + e.message; }
+  $('btnSample').disabled = false;
+};
+
+$('btnVerify').onclick = () => {
+  try {
+    const rec = JSON.parse($('rec').value);
+    const res = kit.verifyAttestation(rec);
+    $('outVerify').innerHTML = res.checks.map((c) =>
+      `<span class="${c.ok === null ? 'skip' : c.ok ? 'pass' : 'fail'}">${c.ok === null ? 'SKIP' : c.ok ? 'PASS' : 'FAIL'}</span> ${c.name}\n    <span class="skip">${c.detail}</span>`
+    ).join('\n') + `\n\nOverall: ${res.ok ? '<span class="pass">VERIFIED</span>' : '<span class="fail">FAILED</span>'}`;
+  } catch (e) { $('outVerify').textContent = 'Error: ' + e.message; }
+};
+
+$('btnStamp').onclick = () => {
+  try {
+    const claim = {
+      label: 'SAMPLE',
+      claim: $('ebClaim').value,
+      point_estimate: Number($('ebPoint').value),
+      claim_type: $('ebType').value.trim(),
+      evidence_tier: $('ebTier').value.trim(),
+      sources: [{ ref: 'demo-page', kind: 'other' }],
+    };
+    const out = kit.errorbar.stamp(claim, 1337);
+    const iv = out.interval;
+    $('outStamp').textContent =
+      `interval: [${iv.low}, ${iv.high}]  (90% nominal, ${iv.method_id})\n` +
+      `confidence: ${out.confidence_tier}   provenance: ${out.provenance.status}\n` +
+      `seed: ${out.seed}   input_sha256: ${out.input_sha256.slice(0, 16)}…\n` +
+      `re-run: kit.errorbar.verify(claim, stamped) -> reproduced must be true`;
+    $('outStamp').dataset.full = JSON.stringify(out, null, 2);
+  } catch (e) { $('outStamp').textContent = 'Error: ' + e.message; }
+};
+$('outStamp').onclick = () => { if ($('outStamp').dataset.full) $('outStamp').textContent = $('outStamp').dataset.full; };
+
+$('btnVerdict').onclick = () => {
+  const mk = (id, status) => ({ evidence_id: id, kind: 'published-verdict', issuer: 'cwi-press',
+    issuer_type: 'third_party', description: 'demo evidence ' + id, weight_class: 2,
+    status, observed_at: '2026-09-17T00:00:00+00:00', identity_cluster: 'cwi-press' });
+  const docIn = { engine_version: '1.0.0',
+    subject: { agent_id: 'agent:demo', display_name: 'Demo Agent' },
+    context: 'music-review', observed_at: new Date().toISOString(),
+    signals: { erc8004: [], needle_drop: [mk('nd-1', 'verified'), mk('nd-2', 'verified')],
+               first_spin: [mk('fs-1', 'verified')] }, evidence_notes: {} };
+  const [out] = kit.verdict.run(docIn);
+  $('outVerdict').textContent =
+    `status: ${out.status}\nscore: ${out.score}   band: ${out.band}\n` +
+    `gate: ${out.gate.verified_found}/${out.gate.min_verified} verified, ` +
+    `${out.gate.families_with_verified.length}/${out.gate.min_families} families\n` +
+    `missing: ${JSON.stringify(out.missing)}`;
+};
+</script>
+</body>
+</html>
