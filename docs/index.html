@@ -3,7 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>cwi-verification-kit — CWI Trust Layer</title>
+<title>cwi-verification-kit — CWI Trust Layer · Cumulative Web Inc</title>
+<meta name="description" content="The CWI Trust Layer verification library — one zero-dependency JavaScript bundle to verify CWI attestations, stamp claims with reproducible confidence intervals, and score agent trust without inventing numbers.">
+<meta property="og:title" content="cwi-verification-kit — CWI Trust Layer · Cumulative Web Inc">
+<meta property="og:description" content="Zero-dependency JS verification for the AI-agent economy: EAS attestations, error-bar claim stamping, evidence-bound trust scoring.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cumulativewebinc.github.io/cwi-verification-kit/">
+<meta property="og:image" content="https://cumulativewebinc.github.io/cwi-verification-kit/brand/cwi-logo.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cwi-verification-kit — CWI Trust Layer · Cumulative Web Inc">
+<meta name="twitter:description" content="Verify CWI attestations, stamp claims, score agent trust — zero deps, browser or Node.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"cwi-verification-kit","url":"https://cumulativewebinc.github.io/cwi-verification-kit/","applicationCategory":"DeveloperApplication","operatingSystem":"Web, Node.js","softwareVersion":"1.0.0","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"Cumulative Web Inc","url":"https://cumulativeweb.com"},"description":"One zero-dependency JavaScript bundle that verifies CWI attestations (Keccak-256, secp256k1, EIP-712 from scratch), stamps claims with reproducible confidence intervals, and scores agent trust without inventing numbers."}
+</script>
 <style>
   :root { --bg:#0b0e14; --fg:#e6e9f0; --mut:#8b93a7; --acc:#ffd34d; --ok:#3ddc84; --bad:#ff5d5d; }
   body { background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif; margin:0; padding:2rem 1rem; }
@@ -27,7 +39,10 @@
 </head>
 <body>
 <main>
-  <h1>👑 cwi-verification-kit</h1>
+  <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">
+    <img src="brand/cwi-logo.jpg" alt="Cumulative Web Inc logo" style="width:64px;height:64px;border-radius:50%;border:2px solid var(--acc);object-fit:cover">
+    <h1 style="margin:0">👑 cwi-verification-kit</h1>
+  </div>
   <div class="sub">The CWI Trust Layer — zero-dependency verification for the AI-agent economy.
     <span class="badge">31/31 tests green</span><span class="badge">$0</span><span class="badge">no deps</span></div>
 
@@ -65,9 +80,17 @@
   </section>
 
   <footer>
-    <p>Built by Cumulative Web Inc · MIT License · <a href="https://github.com/CumulativeWebInc/cwi-verification-kit">repo</a> ·
+    <section style="text-align:center;margin-bottom:1.5rem">
+      <h2 style="font-size:1.2rem">Ship verification your users can check</h2>
+      <p class="sub">cwi-verification-kit is a CWI Agent Deck product — embeddable trust verification for agent platforms, marketplaces, and registries. Zero dependencies, MIT-licensed core.</p>
+      <p><a href="mailto:hp@cumulativeweb.com?subject=cwi-verification-kit%20integration" style="display:inline-block;background:var(--acc);color:#111;font-weight:700;border-radius:6px;padding:.6rem 1.1rem;text-decoration:none">Contact hp@cumulativeweb.com</a>
+      <a href="https://cumulativewebinc.github.io/cwi-verification-kit/" style="display:inline-block;border:1px solid #2a3040;color:var(--fg);border-radius:6px;padding:.6rem 1.1rem;margin-left:.6rem">Try the live demo →</a></p>
+      <p class="sub" style="font-size:.85rem">A Cumulative Web Inc product. Pricing on request — no prices are published without approval.</p>
+    </section>
+    <p>© 2026 Cumulative Web Inc · Built by Cumulative Web Inc · MIT License · <a href="https://github.com/CumulativeWebInc/cwi-verification-kit">repo</a> ·
     <a href="https://github.com/CumulativeWebInc/cwi-verification-kit/blob/main/docs/PARITY.md">parity report</a> ·
-    <a href="https://github.com/CumulativeWebInc/cwi-verification-kit/blob/main/docs/API.md">API docs</a></p>
+    <a href="https://github.com/CumulativeWebInc/cwi-verification-kit/blob/main/docs/API.md">API docs</a> ·
+    <a href="mailto:hp@cumulativeweb.com">hp@cumulativeweb.com</a> · <a href="llms.txt">llms.txt</a> · <a href=".well-known/agent-card.json">agent card</a></p>
     <p>Author: Henry Pitts (Black Lansky) is the founder of Cumulative Web Inc and a systems architect building verification infrastructure for the AI-agent economy.</p>
   </footer>
 </main>

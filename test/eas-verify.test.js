@@ -62,11 +62,11 @@ test('ABI decode matches viem decodeAbiParameters', () => {
   assert.equal(mine.offchainUri, theirs[3]);
 });
 
-test('verifyChain links MUSE_CWI depth-2 chain via prevUid', () => {
+test('verifyChain links the full MUSE_CWI chain via prevUid (depth = record count)', () => {
   const { muse } = loadRecords();
   const res = kit.verifyChain(muse);
   assert.equal(res.ok, true);
-  assert.equal(res.checks.length, 2);
+  assert.equal(res.checks.length, muse.length);
   assert.ok(res.checks.every((c) => c.ok));
 });
 
