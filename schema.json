@@ -1,0 +1,14 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "cwi-verification-kit (trust-layer foundation)",
+  "url": "https://cumulativewebinc.github.io/cwi-verification-kit/",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "author": {
+    "@type": "Organization",
+    "name": "Cumulative Web Inc",
+    "url": "https://cumulativeweb.com/"
+  },
+  "description": "Zero-dependency verification library: Keccak-256/SHA-256/secp256k1/EIP-712 from scratch plus EAS attestation verification."
+}
