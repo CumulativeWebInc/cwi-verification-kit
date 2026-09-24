@@ -10,5 +10,6 @@
     "name": "Cumulative Web Inc",
     "url": "https://cumulativeweb.com/"
   },
-  "description": "Zero-dependency verification library: Keccak-256/SHA-256/secp256k1/EIP-712 from scratch plus EAS attestation verification."
+  "description": "Zero-dependency verification library: Keccak-256/SHA-256/secp256k1/EIP-712 from scratch plus EAS attestation verification.",
+  "schema_version": "1.0.0"
 }
